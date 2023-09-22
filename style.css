@@ -1,0 +1,201 @@
+:root {
+  --tn-dark: rgb(34, 39, 46);
+  --tn-light: #ffffff;
+  --tn-notepad-lines: repeating-linear-gradient(var(--tn-light), var(--tn-light) 25px, blue 26px, blue 26px);
+  --tn-notepad-lines-dark: repeating-linear-gradient(var(--tn-dark), var(--tn-dark) 25px, rgba(255, 255, 255, 0.3) 26px, rgba(255, 255, 255, 0.3) 26px);
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  background-color: var(--tn-light);
+  box-sizing: border-box;
+  padding: 84px 32px 32px 32px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: auto;
+}
+
+body.dark {
+  background-color: var(--tn-dark);
+}
+
+::selection {
+  background-color:rgb(0,0,255, 0.1);
+}
+
+body.dark ::selection {
+  background-color: rgba(255,255,255, 0.15);
+}
+
+#app {
+  width: 100%;
+}
+
+nav {
+  padding: 24px 32px;
+  backdrop-filter: blur(5px);
+  position: fixed;
+  display: flex;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,0.8);
+  margin-bottom: 24px;
+  align-items: center;
+  justify-content: space-between;
+  transition: padding 0.5s, box-shadow 0.5s;
+}
+
+nav.compact {
+  padding: 12px 32px;
+  box-shadow: 0 1px rgb(0,0,255, 0.2);
+}
+
+nav .logo {
+  flex: 0 0 auto;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+nav .logo .mark {
+  display: block;
+  width: 36px;
+  height: 36px;
+  box-shadow: 0 -1px rgb(0,0,255, 0.5);
+  position: relative;
+  background: repeating-linear-gradient(var(--tn-light), var(--tn-light) 8px, blue 9px, blue 9px);
+}
+
+body.dark nav {
+  background: rgba(34, 39, 46, 0.8);
+}
+
+body.dark nav.compact {
+  box-shadow: 0 1px rgb(255,255,255, 0.2);
+}
+
+body.dark nav .logo .mark {
+  box-shadow: 0 -1px rgb(255,255,255, 0.5);    
+  background: repeating-linear-gradient(var(--tn-dark), var(--tn-dark) 8px, var(--tn-light) 9px, var(--tn-light) 9px);
+}
+
+nav .logo .type {
+  margin-left: 12px;
+  color: rgb(0,0,255, 0.7);    
+}
+
+body.dark .logo .type {
+  color: var(--tn-light);
+}
+
+nav .mode-switch {
+  flex: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 14px;
+  border-radius: 32px;
+  padding: 6px;
+  cursor: pointer;
+  background-color: rgb(0,0,255, 0.6);
+  color: var(--tn-light);
+  transition: all 0.2s;
+  box-shadow: 0 0 0 0 transparent;
+  outline: none;
+}
+
+nav .mode-switch svg {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  fill: snow;
+}
+
+nav .mode-switch:hover {
+  box-shadow: 0 0 0 4px rgb(0,0,255, 0.2);
+}
+
+body.dark nav .mode-switch {
+  background-color: var(--tn-light);
+}
+
+body.dark nav .mode-switch:hover {
+  box-shadow: 0 0 0 4px rgb(255,255,255, 0.2);
+}
+
+body.dark nav .mode-switch svg {
+  fill: var(--tn-dark);
+}
+
+#notepad-container {
+  max-width: 680px;
+  position: relative;
+  height: auto;
+  box-sizing: border-box;
+  background: var(--tn-notepad-lines);
+  padding: 0 26px;
+  padding-bottom: 26px;
+  margin: 0;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  line-height: 26px;
+  vertical-align: baseline;
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  margin-inline: auto;
+}
+
+#notepad-container:focus,
+#notepad-container:active,
+#notepad-container:hover {
+  outline: none;
+}
+
+body.dark #notepad-container {
+  background: var(--tn-notepad-lines-dark);
+  color: var(--tn-light);
+}
+
+.character-count {
+  font-size: 14px;
+  line-height: 14px;
+  opacity: 0.5;
+  position: fixed;
+  padding: 4px 8px;
+  border-radius: 14px;
+  background-color: rgba(0,0,0,0.15);
+  bottom: 32px;
+  right: 32px;
+}
+
+body.dark .character-count {
+  color: #ffffff;
+  opacity: 0.65;
+  background-color: rgba(255,255,255,0.15);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding:0 !important;
+  border:0 !important;
+  height: 1px !important; 
+  width: 1px !important; 
+  overflow: hidden;
+}
